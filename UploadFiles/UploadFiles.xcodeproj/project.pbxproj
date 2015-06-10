@@ -14,6 +14,9 @@
 		4D24C29E1B287BB10018547D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D24C29D1B287BB10018547D /* Images.xcassets */; };
 		4D24C2A11B287BB10018547D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D24C29F1B287BB10018547D /* LaunchScreen.xib */; };
 		4D24C2AD1B287BB20018547D /* UploadFilesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D24C2AC1B287BB20018547D /* UploadFilesTests.m */; };
+		4D24C2F51B288FC60018547D /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D24C2F21B288FC60018547D /* 001.jpg */; };
+		4D24C2F61B288FC60018547D /* 002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D24C2F31B288FC60018547D /* 002.jpg */; };
+		4D24C2F71B288FC60018547D /* 003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D24C2F41B288FC60018547D /* 003.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		4D24C2A61B287BB20018547D /* UploadFilesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UploadFilesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D24C2AB1B287BB20018547D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D24C2AC1B287BB20018547D /* UploadFilesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadFilesTests.m; sourceTree = "<group>"; };
+		4D24C2F21B288FC60018547D /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
+		4D24C2F31B288FC60018547D /* 002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 002.jpg; sourceTree = "<group>"; };
+		4D24C2F41B288FC60018547D /* 003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 003.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				4D24C29D1B287BB10018547D /* Images.xcassets */,
+				4D24C2F21B288FC60018547D /* 001.jpg */,
+				4D24C2F31B288FC60018547D /* 002.jpg */,
+				4D24C2F41B288FC60018547D /* 003.jpg */,
 				4D24C2911B287BB10018547D /* Info.plist */,
 				4D24C2921B287BB10018547D /* main.m */,
 			);
@@ -231,6 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D24C2F61B288FC60018547D /* 002.jpg in Resources */,
+				4D24C2F71B288FC60018547D /* 003.jpg in Resources */,
+				4D24C2F51B288FC60018547D /* 001.jpg in Resources */,
 				4D24C29C1B287BB10018547D /* Main.storyboard in Resources */,
 				4D24C2A11B287BB10018547D /* LaunchScreen.xib in Resources */,
 				4D24C29E1B287BB10018547D /* Images.xcassets in Resources */,
