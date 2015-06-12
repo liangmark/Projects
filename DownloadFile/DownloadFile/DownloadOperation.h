@@ -10,6 +10,10 @@
 
 @interface DownloadOperation : NSOperation
 
-+ (instancetype)operationWithUrl:(NSURL *)url;
++ (instancetype)operationWithUrl:(NSURL *)url progressBlock:(void (^)(float progress))progress finishedBlock:(void (^)(id obj))finished;
+/**
+ *  暂停操作
+ */
+- (void)pause;
 
 @end

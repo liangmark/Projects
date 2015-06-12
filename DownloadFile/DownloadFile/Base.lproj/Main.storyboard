@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +16,46 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u36-3D-oeS">
+                                <rect key="frame" x="16" y="58" width="568" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVK-OK-bdY">
+                                <rect key="frame" x="16" y="99" width="30" height="30"/>
+                                <state key="normal" title="下载">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDownloadClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="A0i-Pb-6ek"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-lY-MQ9">
+                                <rect key="frame" x="54" y="99" width="30" height="30"/>
+                                <state key="normal" title="暂停">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPauseClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="IWp-wT-SJ0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u36-3D-oeS" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="38" id="0HH-D8-NC9"/>
+                            <constraint firstItem="rcQ-lY-MQ9" firstAttribute="leading" secondItem="bVK-OK-bdY" secondAttribute="trailing" constant="8" id="CyW-4X-4V9"/>
+                            <constraint firstItem="rcQ-lY-MQ9" firstAttribute="centerY" secondItem="bVK-OK-bdY" secondAttribute="centerY" id="E6X-Jv-rkK"/>
+                            <constraint firstItem="u36-3D-oeS" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="b7q-0w-Ut0"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="rcQ-lY-MQ9" secondAttribute="trailing" constant="20" id="itY-d0-gLB"/>
+                            <constraint firstItem="u36-3D-oeS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="q44-77-hy0"/>
+                            <constraint firstItem="bVK-OK-bdY" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="sEd-t8-7xB"/>
+                            <constraint firstItem="bVK-OK-bdY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="79" id="v3W-ei-lIk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnDownload" destination="bVK-OK-bdY" id="OQ7-ec-9e7"/>
+                        <outlet property="btnPause" destination="rcQ-lY-MQ9" id="hZm-Bl-Ecr"/>
+                        <outlet property="progressView" destination="u36-3D-oeS" id="gO1-Om-7Jl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

@@ -30,14 +30,24 @@
  */
 @property (nonatomic, strong) NSOutputStream *outputStream;
 
+@property (nonatomic, copy) void (^progressBlock)(float progress);
+
+@property (nonatomic, copy) void (^finishedBlock)(id obj);
+
+@property (nonatomic, strong) NSURLConnection *connection;
+
 @end
 
 @implementation DownloadOperation
 
-+ (instancetype)operationWithUrl:(NSURL *)url
++ (instancetype)operationWithUrl:(NSURL *)url progressBlock:(void (^)(float))progress finishedBlock:(void (^)(id))finished
 {
+    // 断言
+    NSAssert(finished != nil, @"必须设置完成回调函数！");
     DownloadOperation *operation = [[self alloc] init];
     operation.url = url;
+    operation.progressBlock = progress;
+    operation.finishedBlock = finished;
     return operation;
 }
 
@@ -49,16 +59,34 @@
 // 重写main方法，执行下载操作
 - (void)main
 {
+    @autoreleasepool {
+        [self download];
+    }
+    
+}
+
+- (void)pause
+{
+    [self.connection cancel];
+}
+
+- (void)download
+{
     // 服务器文件信息
     if (![self serverFileInfo])
     {
         // 无法连接到网络
+        self.finishedBlock(@"网络异常");
         return;
     }
     // 本地文件信息
     [self localFileInfo];
     if (self.currFileSize == self.totalFileSize) {
         // 文件已经下载到本地
+        if (self.progressBlock != nil) {
+            self.progressBlock(1.0);
+        }
+        self.finishedBlock(self.targetFilePath);
         NSLog(@"文件已经被下载了哦！");
         return;
     }
@@ -68,7 +96,7 @@
     NSString *range = [NSString stringWithFormat:@"bytes=%lld-", self.currFileSize];
     [requestM setValue:range forHTTPHeaderField:@"Range"];
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:requestM delegate:self];
+     self.connection = [[NSURLConnection alloc] initWithRequest:requestM delegate:self];
     
     // 启动runloop
     [[NSRunLoop currentRunLoop] run];
@@ -125,7 +153,10 @@
     //NSLog(@"接收到二进制数据");
     self.currFileSize += data.length;
     float progress = (float)self.currFileSize / self.totalFileSize;
-    NSLog(@"%f", progress);
+    NSLog(@"%f----%@", progress, [NSThread currentThread]);
+    if (self.progressBlock != nil) {
+        self.progressBlock(progress);
+    }
     // 通过NSFileHandle将数据写入文件
     //[self writeDataByHandle:data];
     
@@ -162,7 +193,8 @@
     // 关闭文件输出流
     [self.outputStream close];
     NSLog(@"完成!");
-    NSLog(@"%@", self.targetFilePath);
+    //NSLog(@"%@", self.targetFilePath);
+    self.finishedBlock(self.targetFilePath);
 }
 
 @end
